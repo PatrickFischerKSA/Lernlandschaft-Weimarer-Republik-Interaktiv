@@ -3,132 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lernlandschaft – Weimarer Republik (Sek II, transkriptbasiert)</title>
+  <title>Lernlandschaft – Weimarer Republik (Sek II)</title>
   <style>
     body { font-family: system-ui, sans-serif; margin: 0; background: #f2f3f7; }
     header { background:#1f2430; color:#fff; padding:2.5rem; }
     section { background:#fff; margin:2.5rem auto; padding:2.5rem; max-width:980px; border-radius:14px; box-shadow:0 8px 22px rgba(0,0,0,.08); }
-    h2 { margin-top:0; }
     video { width:100%; border-radius:12px; margin:1.5rem 0; background:#000; }
     .path { background:#eef1f7; padding:1rem; border-left:5px solid #5a78b4; margin-bottom:2rem; }
     .question { margin-bottom:2rem; padding:1.2rem; border-left:4px solid #5a78b4; background:#f8f9fc; }
     textarea { width:100%; min-height:110px; padding:.7rem; font-size:1rem; }
     button { margin-top:.6rem; padding:.55rem 1.2rem; font-size:1rem; border-radius:7px; border:none; background:#5a78b4; color:#fff; cursor:pointer; }
-    .feedback { margin-top:.6rem; font-weight:bold; }
-    .hint { display:none; margin-top:.6rem; background:#fff3cd; padding:.7rem; border-radius:6px; }
-    .solution { display:none; margin-top:.6rem; background:#e7eefb; padding:.8rem; border-radius:6px; }
-    .videohint { font-size:.95rem; color:#444; margin-top:-0.8rem; }
-    code { background:#eef1f7; padding:.1rem .35rem; border-radius:6px; }
+    .feedback { font-weight:bold; margin-top:.5rem; }
+    .hint, .solution { display:none; margin-top:.5rem; padding:.7rem; border-radius:6px; }
+    .hint { background:#fff3cd; }
+    .solution { background:#e7eefb; }
   </style>
 </head>
 <body>
 
 <header>
   <h1>Lernlandschaft: Der Weg von Weimar zu Hitler</h1>
-  <p>Sek II · strikt transkriptbasiert · Mehrstufige Korrektur</p>
+  <p>Sek II · Videoanalyse · Mehrstufige Korrektur</p>
 </header>
 
 <section>
   <div class="path"><strong>Lernpfad:</strong> Ursachen → Präsidialkabinette → Hitler</div>
 
   <h2>Modul 1: Ursachen des Scheiterns der Weimarer Republik</h2>
-
-  <!-- Lokaldatei: data-src wird per JS korrekt URL-kodiert -->
-  <video controls preload="metadata" class="video-local" data-src="Das Scheitern der Weimarer Republik - Ursachen  Grundzüge.mp4">
-    <source type="video/mp4">
+  <video controls preload="metadata">
+    <source src="videos/ursachen_weimar.mp4" type="video/mp4">
   </video>
-  <div class="videohint">Falls der Player schwarz bleibt: Datei muss im Repo exakt so heissen wie in <code>data-src</code>.</div>
 
   <div class="question"
-       data-hint="Denke an Versailler Vertrag, Krisen, Propaganda, Wirtschaft, Parteienversagen."
-       data-solution="Das Scheitern der Weimarer Republik beruhte laut Film auf einer Wechselwirkung mehrerer Faktoren: den harten Bedingungen des Versailler Vertrags, politischen Morden und Putschversuchen, der rechten Propaganda (Dolchstoßlegende), massiven Wirtschaftskrisen (Hyperinflation 1923, Weltwirtschaftskrise ab 1929) sowie dem Unvermögen der Parteien, stabile Mehrheiten zu bilden.">
-
-    <p><strong>1. Erkläre anhand des Films, warum es keine einzelne Ursache für das Scheitern der Weimarer Republik gab.</strong></p>
+       data-hint="Versailler Vertrag, politische Gewalt, Propaganda, Wirtschaftskrisen."
+       data-solution="Die Weimarer Republik scheiterte nicht an einer einzelnen Ursache, sondern an einer Wechselwirkung aus wirtschaftlichen Krisen, politischer Radikalisierung, demokratischer Instabilität und gesellschaftlichem Vertrauensverlust.">
+    <p><strong>1. Warum gab es keine einzelne Ursache für das Scheitern der Weimarer Republik?</strong></p>
     <textarea></textarea>
     <button onclick="check(this)">Abschicken</button>
-    <div class="feedback"></div>
-    <div class="hint"></div>
-    <div class="solution"></div>
+    <div class="feedback"></div><div class="hint"></div><div class="solution"></div>
   </div>
 </section>
 
 <section>
-  <h2>Modul 2: Präsidialkabinette – Brüning, Papen, Schleicher</h2>
+  <h2>Modul 2: Präsidialkabinette</h2>
 
-  <video controls preload="metadata" class="video-local" data-src="Weimarer Republik (Zusammenfassung) - Präsidialkabinette (Brüning  Papen  Schleicher) 12.mp4">
-    <source type="video/mp4">
+  <video controls preload="metadata">
+    <source src="videos/praesidialkabinette_1.mp4" type="video/mp4">
   </video>
 
-  <video controls preload="metadata" class="video-local" data-src="Weimarer Republik (Zusammenfassung) - Präsidialkabinette (Brüning  Papen  Schleicher) 22.mp4">
-    <source type="video/mp4">
+  <video controls preload="metadata">
+    <source src="videos/praesidialkabinette_2.mp4" type="video/mp4">
   </video>
 
   <div class="question"
-       data-hint="Beziehe Artikel 48, Rolle des Reichspräsidenten und Ausschaltung des Reichstags ein."
-       data-solution="Die Präsidialkabinette regierten ohne parlamentarische Mehrheit und stützten sich auf Notverordnungen nach Artikel 48. Der Reichspräsident konnte den Reichstag auflösen und damit verhindern, dass Notverordnungen aufgehoben wurden. Das Parlament wurde faktisch ausgeschaltet, die Demokratie außer Kraft gesetzt.">
-
-    <p><strong>2. Zeige auf, weshalb die Präsidialkabinette einen fundamentalen Bruch mit der parlamentarischen Demokratie darstellten.</strong></p>
+       data-hint="Artikel 48, Reichspräsident, Ausschaltung des Parlaments."
+       data-solution="Die Präsidialkabinette regierten ohne parlamentarische Mehrheit und stützten sich auf Notverordnungen. Dadurch wurde die Demokratie faktisch ausser Kraft gesetzt.">
+    <p><strong>2. Warum stellten die Präsidialkabinette einen Systembruch dar?</strong></p>
     <textarea></textarea>
     <button onclick="check(this)">Abschicken</button>
-    <div class="feedback"></div>
-    <div class="hint"></div>
-    <div class="solution"></div>
+    <div class="feedback"></div><div class="hint"></div><div class="solution"></div>
   </div>
 </section>
 
 <section>
   <h2>Modul 3: Hitlers Aufstieg zur Macht (Terra X)</h2>
-
   <video controls preload="metadata">
     <source src="https://www.dropbox.com/scl/fi/xiun3yfvx1xpnfkpbksni/Hitlers-Aufstieg-zur-Macht-Terra-X.mp4?raw=1" type="video/mp4">
   </video>
-
-  <div class="question"
-       data-hint="Achte auf Weltwirtschaftskrise, Elitenkalkül, Wahlkämpfe und SA-Gewalt."
-       data-solution="Der Film zeigt, dass Hitlers Aufstieg durch die Weltwirtschaftskrise, Massenarbeitslosigkeit, moderne Wahlkampftechniken, gezielte Gewalt der SA sowie die Fehlkalkulation konservativer Eliten möglich wurde, die glaubten, Hitler politisch kontrollieren zu können.">
-
-    <p><strong>3. Analysiere die politischen und gesellschaftlichen Bedingungen, die Hitlers Ernennung zum Reichskanzler ermöglichten.</strong></p>
-    <textarea></textarea>
-    <button onclick="check(this)">Abschicken</button>
-    <div class="feedback"></div>
-    <div class="hint"></div>
-    <div class="solution"></div>
-  </div>
 </section>
 
 <section>
   <h2>Modul 4: Adolf Hitler – Vom Niemand zum Diktator</h2>
-
   <video controls preload="metadata">
     <source src="https://www.dropbox.com/scl/fi/x7j90ay6jn60j46zj14mw/Adolf-Hitlers-Aufstieg-Vom-Niemand-zum-Diktator.mp4?raw=1" type="video/mp4">
   </video>
-
-  <div class="question"
-       data-hint="Beziehe Propaganda, Selbstinszenierung, Gewalt, Unterstützerkreise ein."
-       data-solution="Der Film zeigt, dass Hitlers Aufstieg auf einer Kombination aus Redetalent, gezielter Propaganda, Gewalt durch die SA, Unterstützung durch einflussreiche Netzwerke sowie der Ausnutzung politischer Krisen beruhte. Seine Selbstinszenierung als Führer und Retter war zentral.">
-
-    <p><strong>4. Erkläre, wie persönliche Eigenschaften Hitlers mit strukturellen Krisen zusammenwirkten.</strong></p>
-    <textarea></textarea>
-    <button onclick="check(this)">Abschicken</button>
-    <div class="feedback"></div>
-    <div class="hint"></div>
-    <div class="solution"></div>
-  </div>
 </section>
 
 <script>
-/* FIX: Lokale Videodateien mit Leerzeichen/Sonderzeichen sauber URL-kodieren */
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('video.video-local').forEach(v => {
-    const raw = v.getAttribute('data-src');
-    if (!raw) return;
-    const src = encodeURI(raw); // encodiert Leerzeichen/ü etc. zu gültiger URL
-    const source = v.querySelector('source');
-    if (source) source.src = src;
-    v.load();
-  });
-});
-
 function check(btn){
   const q = btn.parentElement;
   const t = q.querySelector('textarea');
@@ -138,23 +89,13 @@ function check(btn){
   let a = q.dataset.a ? Number(q.dataset.a) : 0;
   a++; q.dataset.a = a;
 
-  if (t.value.trim().length < 40) {
-    f.textContent = 'Antwort noch zu oberflächlich.';
-    f.style.color = 'crimson';
-  } else {
-    f.textContent = 'Inhaltlich tragfähig – weiterdenken!';
-    f.style.color = 'green';
-  }
+  f.textContent = t.value.trim().length < 40
+    ? 'Antwort noch zu oberflächlich.'
+    : 'Inhaltlich tragfähig.';
+  f.style.color = t.value.trim().length < 40 ? 'crimson' : 'green';
 
-  if (a === 2) {
-    h.textContent = 'Hinweis: ' + q.dataset.hint;
-    h.style.display = 'block';
-  }
-
-  if (a >= 3) {
-    s.textContent = 'Musterlösung: ' + q.dataset.solution;
-    s.style.display = 'block';
-  }
+  if (a === 2) { h.textContent = 'Hinweis: ' + q.dataset.hint; h.style.display = 'block'; }
+  if (a >= 3) { s.textContent = 'Musterlösung: ' + q.dataset.solution; s.style.display = 'block'; }
 }
 </script>
 
