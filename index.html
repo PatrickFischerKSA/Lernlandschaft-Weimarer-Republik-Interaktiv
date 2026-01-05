@@ -102,6 +102,11 @@ button[disabled] { background: #999; }
   box-shadow:0 8px 22px rgba(0,0,0,.25);
   z-index:6000;
 }
+@media print {
+  body { background: #fff; }
+  .teacher, .btnrow button:not(.next), .video-block, .video-links { display: none !important; }
+  textarea { border: none; }
+}
 </style>
 </head>
 <body>
@@ -119,8 +124,10 @@ button[disabled] { background: #999; }
 </div>
 
 <header>
-<h1>Lernlandschaft: Der Weg von Weimar zu Hitler</h1>
-<p>Sek II – Bewertungssystem mit Mindestschwelle</p>
+  <h1>Lernlandschaft: Der Weg von Weimar zu Hitler</h1>
+  <p>Sek II – Bewertungssystem mit Mindestschwelle</p>
+  <!-- ÄNDERUNG: PDF-Export-Button für Schüler:innen -->
+  <button onclick="exportPDF()" style="margin-top:1rem; padding:0.6rem 1.2rem; font-size:1rem; border:none; border-radius:8px; background:#ffffff; color:#1f2430; font-weight:700; cursor:pointer;">PDF exportieren (Fragen & Antworten)</button>
 </header>
 
 <!-- MODUL 1 -->
@@ -154,6 +161,10 @@ function resetTask(b){const box=b.closest('.task');box.querySelector('textarea')
 function openTeacherLogin(){document.getElementById('teacherLogin').style.display='block'}
 function closeTeacherLogin(){document.getElementById('teacherLogin').style.display='none';document.getElementById('teacherPassword').value=''}
 function checkTeacherPassword(){if(document.getElementById('teacherPassword').value==='Pfäffikon und Nuolen'){teacherMode=true;closeTeacherLogin();alert('Lehrer:innenmodus aktiviert.')}else{alert('Falsches Passwort.')}}
+
+function exportPDF(){
+  window.print();
+}
 </script>
 
 </body>
