@@ -173,6 +173,28 @@ function goNext(btn){
 function exportPDF(){
   window.print();
 }
+
+// FLICK: Weiter-Buttons zuverlässig funktional machen (unabhängig von inline-onclick)
+function goNext(btn){
+  const currentSection = btn.closest('section');
+  if(!currentSection) return;
+  const sections = Array.from(document.querySelectorAll('section'));
+  const idx = sections.indexOf(currentSection);
+  if(idx >= 0 && idx < sections.length - 1){
+    sections[idx + 1].scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('button.next').forEach(b => {
+    b.addEventListener('click', (e) => {
+      e.preventDefault();
+      if(b.disabled) return;
+      goNext(b);
+    });
+  });
+});
+
 </script>
 
 </body>
