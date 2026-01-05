@@ -144,7 +144,7 @@ button[disabled] { background: #999; }
 <textarea></textarea>
 <div class="btnrow">
 <button onclick="check(this)">Antwort prüfen</button>
-<button class="next" disabled>Weiter</button>
+<button class="next" disabled onclick="goNext(this)">Weiter</button>
 <button class="btn-secondary" onclick="resetTask(this)">Reset</button>
 </div>
 <div class="points"></div><div class="missing"></div><div class="feedback"></div><div class="solution"></div>
@@ -161,6 +161,14 @@ function resetTask(b){const box=b.closest('.task');box.querySelector('textarea')
 function openTeacherLogin(){document.getElementById('teacherLogin').style.display='block'}
 function closeTeacherLogin(){document.getElementById('teacherLogin').style.display='none';document.getElementById('teacherPassword').value=''}
 function checkTeacherPassword(){if(document.getElementById('teacherPassword').value==='Pfäffikon und Nuolen'){teacherMode=true;closeTeacherLogin();alert('Lehrer:innenmodus aktiviert.')}else{alert('Falsches Passwort.')}}
+
+function goNext(btn){
+  const section = btn.closest('section');
+  const nextSection = section.nextElementSibling;
+  if(nextSection){
+    nextSection.scrollIntoView({behavior:'smooth'});
+  }
+}
 
 function exportPDF(){
   window.print();
