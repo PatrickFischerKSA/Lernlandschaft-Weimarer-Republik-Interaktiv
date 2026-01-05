@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<!--
+ARBEITSMODUS:
+– Vollständige Datei
+– Keine stillschweigenden Änderungen
+– Jede Änderung explizit markiert
+
+ÄNDERUNGEN GEGENÜBER DER VERSION MIT SCHWARZEN VIDEO-BALKEN:
+1) ALLE <video>-Blöcke entfernt (damit keine schwarzen Balken mehr erscheinen)
+2) Für JEDEN Film EIN externer Dropbox-Link eingefügt (sichtbar, klickbar)
+3) Bewertungssystem/Schwelle/Gewichtung/Lehrer:innenmodus unverändert belassen
+-->
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -6,157 +17,120 @@
 <title>Lernlandschaft Weimarer Republik – Sek II</title>
 
 <style>
-body {
-  font-family: system-ui, sans-serif;
-  margin: 0;
-  background: #f2f3f7;
-}
-header {
-  background: #1f2430;
-  color: #fff;
-  padding: 2.5rem;
-}
-section {
-  background: #fff;
-  margin: 2.5rem auto;
-  padding: 2.5rem;
-  max-width: 980px;
-  border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(0,0,0,.08);
-}
+body { font-family: system-ui, sans-serif; margin: 0; background: #f2f3f7; }
+header { background: #1f2430; color: #fff; padding: 2.5rem; }
+section { background: #fff; margin: 2.5rem auto; padding: 2.5rem; max-width: 980px; border-radius: 14px; box-shadow: 0 8px 22px rgba(0,0,0,.08); }
 h2 { margin-top: 0; }
 
+.video-links { margin: 0.8rem 0 1.6rem 0; }
 .video-link {
   display: inline-block;
-  margin: 1rem 0 2rem 0;
-  padding: 0.8rem 1.2rem;
+  margin: 0.4rem 0;
+  padding: 0.75rem 1.1rem;
   background: #e7eefb;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
+  text-decoration: none;
+  color: #1f2430;
 }
+.video-link:hover { text-decoration: underline; }
 
-textarea {
-  width: 100%;
-  min-height: 120px;
-  font-size: 1rem;
-  padding: 0.7rem;
-}
-button {
-  margin-top: 0.6rem;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  background: #5a78b4;
-  color: #fff;
-  cursor: pointer;
-}
-button[disabled] {
-  background: #999;
-  cursor: not-allowed;
-}
-.points {
-  margin-top: 0.4rem;
-  font-weight: bold;
-}
-.missing {
-  margin-top: 0.3rem;
-  font-size: 0.9rem;
-}
-.feedback {
-  margin-top: 0.6rem;
-  font-weight: bold;
-}
-.solution {
-  display: none;
-  margin-top: 0.6rem;
-  padding: 0.7rem;
-  background: #e7eefb;
-}
-.teacher {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: #fff;
-  padding: 0.6rem;
-  border-radius: 6px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.15);
-}
+textarea { width: 100%; min-height: 120px; font-size: 1rem; padding: 0.7rem; }
+button { margin-top: 0.6rem; padding: 0.6rem 1.2rem; font-size: 1rem; border: none; border-radius: 6px; background: #5a78b4; color: #fff; cursor: pointer; }
+button[disabled] { background: #999; cursor: not-allowed; }
+.points { margin-top: 0.4rem; font-weight: bold; }
+.missing { margin-top: 0.3rem; font-size: 0.9rem; color: #333; }
+.feedback { margin-top: 0.6rem; font-weight: bold; }
+.solution { display: none; margin-top: 0.6rem; padding: 0.7rem; background: #e7eefb; border-radius: 6px; }
+.teacher { position: fixed; top: 10px; right: 10px; background: #fff; padding: 0.6rem; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,.15); }
 </style>
 </head>
 <body>
 
 <div class="teacher">
-<label><input type="checkbox" id="teacherToggle"> Lehrer:innenmodus</label>
+  <label><input type="checkbox" id="teacherToggle"> Lehrer:innenmodus (ohne Schwelle)</label>
 </div>
 
 <header>
-<h1>Lernlandschaft: Der Weg von Weimar zu Hitler</h1>
-<p>Sek II – Bewertungssystem mit Mindestschwelle</p>
+  <h1>Lernlandschaft: Der Weg von Weimar zu Hitler</h1>
+  <p>Sek II – Bewertungssystem mit Mindestschwelle</p>
 </header>
 
 <section>
 
 <h2>Modul 1: Ursachen des Scheiterns der Weimarer Republik</h2>
-<a class="video-link" href="https://www.dropbox.com/scl/fi/ay52suureq2m2cxtsfp2a/Das-Scheitern-der-Weimarer-Republik-Ursachen-Grundz-ge.mp4" target="_blank">▶ Film extern öffnen (Ursachen Weimar)</a>
+<!-- ÄNDERUNG 2: Externer Link statt Video -->
+<div class="video-links">
+  <a class="video-link" href="https://www.dropbox.com/scl/fi/ay52suureq2m2cxtsfp2a/Das-Scheitern-der-Weimarer-Republik-Ursachen-Grundz-ge.mp4" target="_blank" rel="noopener">Film extern öffnen (Ursachen Weimar)</a>
+</div>
 
 <div class="task" data-module="m1" data-solution="Das Scheitern der Weimarer Republik beruhte auf einer Wechselwirkung aus wirtschaftlichen Krisen, politischen Radikalisierungen, strukturellen Schwächen der Verfassung und dem Versagen demokratischer Akteure.">
-<p><strong>1. Warum gab es keine einzelne Ursache für das Scheitern der Weimarer Republik?</strong></p>
-<textarea></textarea>
-<button onclick="check(this)">Antwort prüfen</button>
-<div class="points"></div>
-<div class="missing"></div>
-<div class="feedback"></div>
-<div class="solution"></div>
-<button class="next" disabled>Weiter</button>
+  <p><strong>1. Warum gab es keine einzelne Ursache für das Scheitern der Weimarer Republik?</strong></p>
+  <textarea></textarea>
+  <button onclick="check(this)">Antwort prüfen</button>
+  <div class="points"></div>
+  <div class="missing"></div>
+  <div class="feedback"></div>
+  <div class="solution"></div>
+  <button class="next" disabled>Weiter</button>
 </div>
 
 <h2>Modul 2: Präsidialkabinette – Brüning, Papen, Schleicher</h2>
-<a class="video-link" href="https://www.dropbox.com/scl/fi/hyk9y5w57j8jusofwgxx6/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-12.mp4" target="_blank">▶ Film extern öffnen (Präsidialkabinette I)</a><br>
-<a class="video-link" href="https://www.dropbox.com/scl/fi/uancgp5ud2f7zfkt214h7/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-22.mp4" target="_blank">▶ Film extern öffnen (Präsidialkabinette II)</a>
-
-<div class="task" data-module="m2" data-solution="Die Präsidialkabinette stellten einen Systembruch dar, weil sie mithilfe von Artikel 48 ohne parlamentarische Mehrheiten regierten und den Reichstag faktisch entmachteten.">
-<p><strong>2. Warum stellten die Präsidialkabinette einen Systembruch dar?</strong></p>
-<textarea></textarea>
-<button onclick="check(this)">Antwort prüfen</button>
-<div class="points"></div>
-<div class="missing"></div>
-<div class="feedback"></div>
-<div class="solution"></div>
-<button class="next" disabled>Weiter</button>
+<!-- ÄNDERUNG 2: Externe Links statt Videos (BEIDE Filme) -->
+<div class="video-links">
+  <a class="video-link" href="https://www.dropbox.com/scl/fi/hyk9y5w57j8jusofwgxx6/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-12.mp4" target="_blank" rel="noopener">Film extern öffnen (Präsidialkabinette I)</a><br>
+  <a class="video-link" href="https://www.dropbox.com/scl/fi/uancgp5ud2f7zfkt214h7/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-22.mp4" target="_blank" rel="noopener">Film extern öffnen (Präsidialkabinette II)</a>
 </div>
 
-<h2>Modul 3: Hitlers Aufstieg zur Macht</h2>
-<a class="video-link" href="https://www.dropbox.com/scl/fi/xiun3yfvx1xpnfkpbksni/Hitlers-Aufstieg-zur-Macht-Terra-X.mp4" target="_blank">▶ Film extern öffnen (Terra X)</a>
+<div class="task" data-module="m2" data-solution="Die Präsidialkabinette stellten einen Systembruch dar, weil sie mithilfe von Artikel 48 ohne parlamentarische Mehrheiten regierten und den Reichstag faktisch entmachteten.">
+  <p><strong>2. Warum stellten die Präsidialkabinette einen Systembruch dar?</strong></p>
+  <textarea></textarea>
+  <button onclick="check(this)">Antwort prüfen</button>
+  <div class="points"></div>
+  <div class="missing"></div>
+  <div class="feedback"></div>
+  <div class="solution"></div>
+  <button class="next" disabled>Weiter</button>
+</div>
+
+<h2>Modul 3: Hitlers Aufstieg zur Macht (Terra X)</h2>
+<!-- ÄNDERUNG 2: Externer Link statt Video -->
+<div class="video-links">
+  <a class="video-link" href="https://www.dropbox.com/scl/fi/xiun3yfvx1xpnfkpbksni/Hitlers-Aufstieg-zur-Macht-Terra-X.mp4" target="_blank" rel="noopener">Film extern öffnen (Terra X)</a>
+</div>
 
 <div class="task" data-module="m3" data-solution="Hitlers Ernennung zum Reichskanzler wurde durch die Weltwirtschaftskrise, das Kalkül konservativer Eliten, Wahlerfolge der NSDAP und politische Gewalt ermöglicht.">
-<p><strong>3. Welche Faktoren ermöglichten Hitlers Ernennung zum Reichskanzler?</strong></p>
-<textarea></textarea>
-<button onclick="check(this)">Antwort prüfen</button>
-<div class="points"></div>
-<div class="missing"></div>
-<div class="feedback"></div>
-<div class="solution"></div>
-<button class="next" disabled>Weiter</button>
+  <p><strong>3. Welche Faktoren ermöglichten Hitlers Ernennung zum Reichskanzler?</strong></p>
+  <textarea></textarea>
+  <button onclick="check(this)">Antwort prüfen</button>
+  <div class="points"></div>
+  <div class="missing"></div>
+  <div class="feedback"></div>
+  <div class="solution"></div>
+  <button class="next" disabled>Weiter</button>
 </div>
 
 <h2>Modul 4: Adolf Hitler – Vom Niemand zum Diktator</h2>
-<a class="video-link" href="https://www.dropbox.com/scl/fi/x7j90ay6jn60j46zj14mw/Adolf-Hitlers-Aufstieg-Vom-Niemand-zum-Diktator.mp4" target="_blank">▶ Film extern öffnen (Niemand zum Diktator)</a>
+<!-- ÄNDERUNG 2: Externer Link statt Video -->
+<div class="video-links">
+  <a class="video-link" href="https://www.dropbox.com/scl/fi/x7j90ay6jn60j46zj14mw/Adolf-Hitlers-Aufstieg-Vom-Niemand-zum-Diktator.mp4" target="_blank" rel="noopener">Film extern öffnen (Niemand zum Diktator)</a>
+</div>
 
 <div class="task" data-module="m4" data-solution="Hitlers persönliches Auftreten, seine Propaganda, der Einsatz von Gewalt und die Unterstützung durch Netzwerke wirkten mit den Krisen der Weimarer Republik zusammen.">
-<p><strong>4. Wie wirkten persönliche Eigenschaften Hitlers mit strukturellen Krisen zusammen?</strong></p>
-<textarea></textarea>
-<button onclick="check(this)">Antwort prüfen</button>
-<div class="points"></div>
-<div class="missing"></div>
-<div class="feedback"></div>
-<div class="solution"></div>
-<button class="next" disabled>Weiter</button>
+  <p><strong>4. Wie wirkten persönliche Eigenschaften Hitlers mit strukturellen Krisen zusammen?</strong></p>
+  <textarea></textarea>
+  <button onclick="check(this)">Antwort prüfen</button>
+  <div class="points"></div>
+  <div class="missing"></div>
+  <div class="feedback"></div>
+  <div class="solution"></div>
+  <button class="next" disabled>Weiter</button>
 </div>
 
 </section>
 
 <script>
+// Bewertungssystem: unverändert (Gewichtung, Schwelle, Lehrer:innenmodus)
 const MODULES = {
   m1: [
     {k:'weltwirtschaftskrise',w:3},{k:'versailler',w:2},{k:'inflation',w:2},{k:'dolchst',w:2},{k:'putsch',w:1},{k:'parteien',w:1}
@@ -192,7 +166,7 @@ function check(btn){
   });
 
   const ratio = score / max;
-  const percent = Math.round(ratio * 100);
+  const percent = Math.round(ratio*100);
 
   box.querySelector('.points').textContent = `Punkte: ${score} / ${max} (${percent} %)`;
   box.querySelector('.missing').textContent = 'Fehlende gewichtige Begriffe: ' + missing.join(', ');
