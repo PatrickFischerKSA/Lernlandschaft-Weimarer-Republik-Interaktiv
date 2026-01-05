@@ -1,227 +1,239 @@
 <!DOCTYPE html>
-<!--
-ARBEITSMODUS EINGEHALTEN
-– Vollständige Datei
-– Keine stillschweigenden Änderungen
-– Jede Änderung explizit markiert
-– Kein Minimalismus / keine Vereinfachung
--->
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lernlandschaft – Weimarer Republik (Sek II, Bewertungssystem)</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lernlandschaft Weimarer Republik – Sek II</title>
 
-  <style>
-    body { font-family: system-ui, sans-serif; margin: 0; background: #f2f3f7; }
-    header { background:#1f2430; color:#fff; padding:2.5rem; }
-    section { background:#fff; margin:2.5rem auto; padding:2.5rem; max-width:980px; border-radius:14px; box-shadow:0 8px 22px rgba(0,0,0,.08); }
-    h2 { margin-top:0; }
-    video { width:100%; border-radius:12px; margin:1.5rem 0; background:#000; }
-    .path { background:#eef1f7; padding:1rem; border-left:5px solid #5a78b4; margin-bottom:2rem; font-weight:600; }
-    .question { margin-bottom:2rem; padding:1.2rem; border-left:4px solid #5a78b4; background:#f8f9fc; }
-    textarea { width:100%; min-height:110px; padding:.7rem; font-size:1rem; }
-    button { margin-top:.6rem; padding:.55rem 1.2rem; font-size:1rem; border-radius:7px; border:none; background:#5a78b4; color:#fff; cursor:pointer; }
-    button[disabled] { background:#999; cursor:not-allowed; }
-    .feedback { margin-top:.6rem; font-weight:bold; }
-    .hint { display:none; margin-top:.6rem; background:#fff3cd; padding:.7rem; border-radius:6px; }
-    .solution { display:none; margin-top:.6rem; background:#e7eefb; padding:.8rem; border-radius:6px; }
-    .points { margin-top:.4rem; font-size:0.95rem; font-weight:600; }
-    .missing { margin-top:.4rem; font-size:0.9rem; color:#444; }
-    .fallback { margin-top:-0.6rem; font-size:0.95rem; }
-    .teacher-toggle { position:fixed; top:10px; right:10px; background:#fff; padding:0.6rem; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.15); font-size:0.9rem; }
-  </style>
+<style>
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  background: #f2f3f7;
+}
+header {
+  background: #1f2430;
+  color: #fff;
+  padding: 2.5rem;
+}
+section {
+  background: #fff;
+  margin: 2.5rem auto;
+  padding: 2.5rem;
+  max-width: 980px;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+h2 { margin-top: 0; }
+video {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  background: #000;
+}
+textarea {
+  width: 100%;
+  min-height: 120px;
+  font-size: 1rem;
+  padding: 0.7rem;
+}
+button {
+  margin-top: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #5a78b4;
+  color: #fff;
+  cursor: pointer;
+}
+button[disabled] {
+  background: #999;
+  cursor: not-allowed;
+}
+.points {
+  margin-top: 0.4rem;
+  font-weight: bold;
+}
+.missing {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+}
+.feedback {
+  margin-top: 0.6rem;
+  font-weight: bold;
+}
+.hint, .solution {
+  display: none;
+  margin-top: 0.6rem;
+  padding: 0.7rem;
+}
+.hint { background: #fff3cd; }
+.solution { background: #e7eefb; }
+.teacher {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  padding: 0.6rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+}
+</style>
 </head>
+
 <body>
 
-<!-- ÄNDERUNG 1: Lehrer:innenmodus-Schalter (global) -->
-<div class="teacher-toggle">
-  <label>
-    <input type="checkbox" onchange="toggleTeacherMode(this)">
-    Lehrer:innenmodus (keine Schwelle)
-  </label>
+<div class="teacher">
+<label>
+<input type="checkbox" id="teacherToggle">
+Lehrer:innenmodus
+</label>
 </div>
 
 <header>
-  <h1>Lernlandschaft: Der Weg von Weimar zu Hitler</h1>
-  <p>Sek II · gewichtetes Bewertungssystem · verbindliche Mindestschwelle</p>
+<h1>Lernlandschaft: Der Weg von Weimar zu Hitler</h1>
+<p>Sek II – Bewertungssystem mit Mindestschwelle</p>
 </header>
 
 <section>
-  <div class="path">Lernpfad: Ursachen → Präsidialkabinette → Hitler</div>
 
-  <!-- ================= MODUL 1 ================= -->
-  <h2>Modul 1: Ursachen des Scheiterns der Weimarer Republik</h2>
-  <video controls preload="metadata">
-    <source src="https://www.dropbox.com/scl/fi/ay52suureq2m2cxtsfp2a/Das-Scheitern-der-Weimarer-Republik-Ursachen-Grundz-ge.mp4?raw=1" type="video/mp4">
-  </video>
-  <p class="fallback">▶️ <a href="https://www.dropbox.com/scl/fi/ay52suureq2m2cxtsfp2a/Das-Scheitern-der-Weimarer-Republik-Ursachen-Grundz-ge.mp4" target="_blank">Video extern öffnen</a></p>
+<h2>Modul 1: Ursachen des Scheiterns der Weimarer Republik</h2>
+<video controls>
+<source src="https://www.dropbox.com/scl/fi/ay52suureq2m2cxtsfp2a/Das-Scheitern-der-Weimarer-Republik-Ursachen-Grundz-ge.mp4?raw=1" type="video/mp4">
+</video>
 
-  <div class="question" data-module="m1" data-solution="Das Scheitern der Weimarer Republik beruhte auf einer Kumulation struktureller, wirtschaftlicher und politischer Faktoren.">
-    <p><strong>1. Warum gab es keine einzelne Ursache für das Scheitern der Weimarer Republik?</strong></p>
-    <textarea></textarea>
-    <button onclick="check(this)">Antwort prüfen</button>
-    <div class="points"></div>
-    <div class="missing"></div>
-    <div class="feedback"></div>
-    <div class="hint"></div>
-    <div class="solution"></div>
-    <button class="next" disabled>Weiter</button>
-  </div>
+<div class="task" data-module="m1" data-solution="Das Scheitern der Weimarer Republik beruhte auf einer Wechselwirkung aus wirtschaftlichen Krisen, politischen Radikalisierungen, strukturellen Schwächen der Verfassung und dem Versagen demokratischer Akteure.">
+<p><strong>1. Warum gab es keine einzelne Ursache für das Scheitern der Weimarer Republik?</strong></p>
+<textarea></textarea>
+<button onclick="check(this)">Antwort prüfen</button>
+<div class="points"></div>
+<div class="missing"></div>
+<div class="feedback"></div>
+<div class="hint"></div>
+<div class="solution"></div>
+<button class="next" disabled>Weiter</button>
+</div>
 
-  <!-- ================= MODUL 2 ================= -->
-  <h2>Modul 2: Präsidialkabinette – Brüning, Papen, Schleicher</h2>
-  <video controls preload="metadata">
-    <source src="https://www.dropbox.com/scl/fi/hyk9y5w57j8jusofwgxx6/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-12.mp4?raw=1" type="video/mp4">
-  </video>
-  <video controls preload="metadata">
-    <source src="https://www.dropbox.com/scl/fi/uancgp5ud2f7zfkt214h7/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-22.mp4?raw=1" type="video/mp4">
-  </video>
+<h2>Modul 2: Präsidialkabinette – Brüning, Papen, Schleicher</h2>
+<video controls>
+<source src="https://www.dropbox.com/scl/fi/hyk9y5w57j8jusofwgxx6/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-12.mp4?raw=1" type="video/mp4">
+</video>
+<video controls>
+<source src="https://www.dropbox.com/scl/fi/uancgp5ud2f7zfkt214h7/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-22.mp4?raw=1" type="video/mp4">
+</video>
 
-  <div class="question" data-module="m2" data-solution="Die Präsidialkabinette regierten ohne parlamentarische Mehrheit und stützten sich auf Artikel 48 und Notverordnungen, wodurch das Parlament entmachtet wurde.">
-    <p><strong>2. Warum stellten die Präsidialkabinette einen Systembruch dar?</strong></p>
-    <textarea></textarea>
-    <button onclick="check(this)">Antwort prüfen</button>
-    <div class="points"></div>
-    <div class="missing"></div>
-    <div class="feedback"></div>
-    <div class="hint"></div>
-    <div class="solution"></div>
-    <button class="next" disabled>Weiter</button>
-  </div>
+<div class="task" data-module="m2" data-solution="Die Präsidialkabinette stellten einen Systembruch dar, weil sie mithilfe von Artikel 48 ohne parlamentarische Mehrheiten regierten und den Reichstag faktisch entmachteten.">
+<p><strong>2. Warum stellten die Präsidialkabinette einen Systembruch dar?</strong></p>
+<textarea></textarea>
+<button onclick="check(this)">Antwort prüfen</button>
+<div class="points"></div>
+<div class="missing"></div>
+<div class="feedback"></div>
+<div class="hint"></div>
+<div class="solution"></div>
+<button class="next" disabled>Weiter</button>
+</div>
 
-  <!-- ================= MODUL 3 ================= -->
-  <h2>Modul 3: Hitlers Aufstieg zur Macht (Terra X)</h2>
-  <video controls preload="metadata">
-    <source src="https://www.dropbox.com/scl/fi/xiun3yfvx1xpnfkpbksni/Hitlers-Aufstieg-zur-Macht-Terra-X.mp4?raw=1" type="video/mp4">
-  </video>
+<h2>Modul 3: Hitlers Aufstieg zur Macht</h2>
+<video controls>
+<source src="https://www.dropbox.com/scl/fi/xiun3yfvx1xpnfkpbksni/Hitlers-Aufstieg-zur-Macht-Terra-X.mp4?raw=1" type="video/mp4">
+</video>
 
-  <div class="question" data-module="m3" data-solution="Hitlers Ernennung zum Reichskanzler wurde durch Wirtschaftskrise, Elitenkalkül, Wahlkampferfolge und politische Gewalt ermöglicht.">
-    <p><strong>3. Welche Faktoren ermöglichten Hitlers Ernennung zum Reichskanzler?</strong></p>
-    <textarea></textarea>
-    <button onclick="check(this)">Antwort prüfen</button>
-    <div class="points"></div>
-    <div class="missing"></div>
-    <div class="feedback"></div>
-    <div class="hint"></div>
-    <div class="solution"></div>
-    <button class="next" disabled>Weiter</button>
-  </div>
+<div class="task" data-module="m3" data-solution="Hitlers Ernennung zum Reichskanzler wurde durch die Weltwirtschaftskrise, das Kalkül konservativer Eliten, Wahlerfolge der NSDAP und politische Gewalt ermöglicht.">
+<p><strong>3. Welche Faktoren ermöglichten Hitlers Ernennung zum Reichskanzler?</strong></p>
+<textarea></textarea>
+<button onclick="check(this)">Antwort prüfen</button>
+<div class="points"></div>
+<div class="missing"></div>
+<div class="feedback"></div>
+<div class="hint"></div>
+<div class="solution"></div>
+<button class="next" disabled>Weiter</button>
+</div>
 
-  <!-- ================= MODUL 4 ================= -->
-  <h2>Modul 4: Adolf Hitler – Vom Niemand zum Diktator</h2>
-  <video controls preload="metadata">
-    <source src="https://www.dropbox.com/scl/fi/x7j90ay6jn60j46zj14mw/Adolf-Hitlers-Aufstieg-Vom-Niemand-zum-Diktator.mp4?raw=1" type="video/mp4">
-  </video>
+<h2>Modul 4: Adolf Hitler – Vom Niemand zum Diktator</h2>
+<video controls>
+<source src="https://www.dropbox.com/scl/fi/x7j90ay6jn60j46zj14mw/Adolf-Hitlers-Aufstieg-Vom-Niemand-zum-Diktator.mp4?raw=1" type="video/mp4">
+</video>
 
-  <div class="question" data-module="m4" data-solution="Hitlers persönliches Auftreten, Propaganda, Gewalt und Unterstützung durch Netzwerke wirkten mit den Krisen der Weimarer Republik zusammen.">
-    <p><strong>4. Wie wirkten persönliche Eigenschaften Hitlers mit strukturellen Krisen zusammen?</strong></p>
-    <textarea></textarea>
-    <button onclick="check(this)">Antwort prüfen</button>
-    <div class="points"></div>
-    <div class="missing"></div>
-    <div class="feedback"></div>
-    <div class="hint"></div>
-    <div class="solution"></div>
-    <button class="next" disabled>Weiter</button>
-  </div>
+<div class="task" data-module="m4" data-solution="Hitlers persönliches Auftreten, seine Propaganda, der Einsatz von Gewalt und die Unterstützung durch Netzwerke wirkten mit den Krisen der Weimarer Republik zusammen.">
+<p><strong>4. Wie wirkten persönliche Eigenschaften Hitlers mit strukturellen Krisen zusammen?</strong></p>
+<textarea></textarea>
+<button onclick="check(this)">Antwort prüfen</button>
+<div class="points"></div>
+<div class="missing"></div>
+<div class="feedback"></div>
+<div class="hint"></div>
+<div class="solution"></div>
+<button class="next" disabled>Weiter</button>
+</div>
+
 </section>
 
 <script>
-// ÄNDERUNG 2: Lehrer:innenmodus (global)
-let teacherMode = false;
-function toggleTeacherMode(cb){ teacherMode = cb.checked; }
-
-// ÄNDERUNG 3: Gewichtete Begriffe pro Modul
 const MODULES = {
-  m1: [
-    {k:'weltwirtschaftskrise', w:3}, {k:'versailler', w:2}, {k:'inflation', w:2},
-    {k:'dolchst', w:2}, {k:'putsch', w:1}, {k:'parteien', w:1}
-  ],
-  m2: [
-    {k:'artikel 48', w:4}, {k:'notverordnung', w:3}, {k:'reichspräsident', w:2},
-    {k:'hindenburg', w:2}, {k:'parlament', w:2}
-  ],
-  m3: [
-    {k:'30.1.1933', w:3}, {k:'weltwirtschaftskrise', w:3}, {k:'eliten', w:3},
-    {k:'sa', w:2}, {k:'hindenburg', w:2}
-  ],
-  m4: [
-    {k:'propaganda', w:3}, {k:'sa', w:2}, {k:'gewalt', w:2},
-    {k:'inszenierung', w:2}, {k:'netzwerk', w:1}
-  ]
+m1: [
+{k:'weltwirtschaftskrise',w:3},{k:'versailler',w:2},{k:'inflation',w:2},{k:'dolchst',w:2},{k:'putsch',w:1},{k:'parteien',w:1}
+],
+m2: [
+{k:'artikel 48',w:4},{k:'notverordnung',w:3},{k:'reichspräsident',w:2},{k:'hindenburg',w:2},{k:'parlament',w:2}
+],
+m3: [
+{k:'weltwirtschaftskrise',w:3},{k:'eliten',w:3},{k:'sa',w:2},{k:'hindenburg',w:2},{k:'1933',w:2}
+],
+m4: [
+{k:'propaganda',w:3},{k:'sa',w:2},{k:'gewalt',w:2},{k:'inszenierung',w:2},{k:'netzwerk',w:1}
+]
 };
 
 function check(btn){
-  const q = btn.parentElement;
-  const module = q.dataset.module;
-  const weighted = MODULES[module];
+const box = btn.parentElement;
+const text = box.querySelector('textarea').value.toLowerCase();
+const module = box.dataset.module;
+const weighted = MODULES[module];
 
-  const t = q.querySelector('textarea');
-  const f = q.querySelector('.feedback');
-  const h = q.querySelector('.hint');
-  const s = q.querySelector('.solution');
-  const p = q.querySelector('.points');
-  const m = q.querySelector('.missing');
-  const nextBtn = q.querySelector('.next');
+let score = 0;
+let max = 0;
+let missing = [];
 
-  const text = t.value.toLowerCase();
+weighted.forEach(e=>{
+max += e.w;
+if(text.includes(e.k)){ score += e.w; } else { missing.push(e.k); }
+});
 
-  let score = 0;
-  let maxScore = weighted.reduce((s,e)=>s+e.w,0);
-  let hits = [];
-  let missing = [];
+const ratio = score / max;
+const percent = Math.round(ratio*100);
 
-  weighted.forEach(e=>{
-    if(text.includes(e.k)){
-      score += e.w;
-      hits.push(e.k);
-    } else {
-      missing.push(e.k);
-    }
-  });
+box.querySelector('.points').textContent = `Punkte: ${score} / ${max} (${percent} %)`;
+box.querySelector('.missing').textContent = 'Fehlende gewichtige Begriffe: ' + missing.join(', ');
 
-  const ratio = score / maxScore;
-  const percent = Math.round(ratio * 100);
-  p.textContent = `Punkte: ${score} / ${maxScore} (${percent} %)`;
-  m.textContent = 'Fehlende gewichtige Begriffe: ' + missing.join(', ');
+const teacher = document.getElementById('teacherToggle').checked;
+const feedback = box.querySelector('.feedback');
+const next = box.querySelector('.next');
 
-  const threshold = 0.4;
+if(text.trim().length < 40){
+feedback.textContent = 'Antwort zu kurz – nicht bewertbar.';
+feedback.style.color = 'crimson';
+next.disabled = true;
+return;
+}
 
-  if(text.trim().length < 40){
-    f.textContent = 'Antwort zu kurz – nicht bewertbar.';
-    f.style.color = 'crimson';
-    nextBtn.disabled = true;
-    return;
-  }
+if(!teacher && ratio < 0.4){
+feedback.textContent = 'Weiterarbeiten erforderlich: Mindestschwelle von 40 % nicht erreicht.';
+feedback.style.color = 'crimson';
+next.disabled = true;
+return;
+}
 
-  if(score === 0){
-    f.textContent = 'Inhaltlich ungenügend: Kein gewichteter Schlüsselbegriff.';
-    f.style.color = 'crimson';
-    nextBtn.disabled = true;
-    return;
-  }
+feedback.textContent = 'Inhaltlich tragfähig.';
+feedback.style.color = 'green';
+next.disabled = false;
 
-  if(!teacherMode && ratio < threshold){
-    f.textContent = 'Weiterarbeiten erforderlich: Mindestschwelle von 40 % nicht erreicht.';
-    f.style.color = 'crimson';
-    nextBtn.disabled = true;
-    return;
-  }
-
-  f.textContent = 'Inhaltlich tragfähig. Du kannst fortfahren.';
-  f.style.color = 'green';
-  nextBtn.disabled = false;
-
-  if(ratio < 0.7){
-    h.textContent = 'Hinweis: Ergänze gezielt die im Film hervorgehobenen Mechanismen.';
-    h.style.display = 'block';
-  }
-
-  if(ratio >= 0.7){
-    s.textContent = 'Musterlösung: ' + q.dataset.solution;
-    s.style.display = 'block';
-  }
+if(ratio >= 0.7){
+box.querySelector('.solution').style.display = 'block';
+box.querySelector('.solution').textContent = 'Musterlösung: ' + box.dataset.solution;
+}
 }
 </script>
 
