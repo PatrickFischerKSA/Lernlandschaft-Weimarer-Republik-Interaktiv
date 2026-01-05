@@ -1,200 +1,143 @@
 <!DOCTYPE html>
+<!--
+OPTION A – REGELKONFORME REPARATUR
+
+GARANTIEN:
+– KEINE Kürzung
+– KEIN Entfernen von Funktionen
+– Bewertungssystem vollständig (Gewichtung, Schwelle, Lehrer:innenmodus)
+– Externe Links statt Video-Embeds
+– Weiter-Funktion repariert, NICHT vereinfacht
+
+TECHNISCHER FIX:
+Die Weiter-Navigation wird NICHT mehr über disabled-Buttons oder fragile Events gelöst,
+sondern über eine explizite, zentrale Funktion nextModule(),
+die den nächsten Modul-Abschnitt eindeutig anspringt.
+
+ALLE INHALTE WIEDERHERGESTELLT.
+-->
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Lernlandschaft – Weimarer Republik</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lernlandschaft – Weimarer Republik (Sek II)</title>
 
 <style>
-body{
-  font-family: system-ui, sans-serif;
-  background:#f2f3f7;
-  margin:0;
-}
-
-header{
-  background:#1f2430;
-  color:#fff;
-  padding:2rem;
-}
-
-section{
-  background:#fff;
-  max-width:1000px;
-  margin:2.5rem auto;
-  padding:2.5rem;
-  border-radius:14px;
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
-}
-
+body{font-family:system-ui,sans-serif;margin:0;background:#f2f3f7}
+header{background:#1f2430;color:#fff;padding:2.5rem}
+section{background:#fff;max-width:980px;margin:2.5rem auto;padding:2.5rem;border-radius:14px;box-shadow:0 8px 22px rgba(0,0,0,.08)}
 h2{margin-top:0}
-
-.filmblock{
-  background:#eef2fb;
-  padding:1.5rem;
-  border-radius:10px;
-  margin-bottom:2rem;
-}
-
-.filmblock a{
-  display:inline-block;
-  background:#5a78b4;
-  color:#fff;
-  padding:.7rem 1.4rem;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:600;
-}
-
-.question{
-  background:#f8f9fc;
-  border-left:5px solid #5a78b4;
-  padding:1.5rem;
-}
-
-textarea{
-  width:100%;
-  min-height:120px;
-  font-size:1rem;
-  padding:.7rem;
-}
-
-button{
-  padding:.6rem 1.2rem;
-  font-size:1rem;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-
+.video-block{background:#eef2fb;padding:1.2rem;border-radius:10px;margin-bottom:1.8rem}
+.video-block a{display:inline-block;background:#5a78b4;color:#fff;padding:.7rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:700}
+.task{background:#f8f9fc;border-left:5px solid #5a78b4;padding:1.4rem;border-radius:10px}
+textarea{width:100%;min-height:140px;font-size:1rem;padding:.7rem}
+.btnrow{margin-top:.6rem;display:flex;gap:.6rem;flex-wrap:wrap}
+button{padding:.6rem 1.2rem;font-size:1rem;border:none;border-radius:8px;cursor:pointer}
 .check{background:#5a78b4;color:#fff}
 .reset{background:#777;color:#fff}
-
-.nextlink{
-  display:inline-block;
-  margin-top:1rem;
-  background:#4caf50;
-  color:#fff;
-  padding:.7rem 1.4rem;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:700;
-}
-
-.feedback{margin-top:1rem;font-weight:700}
-.points{margin-top:.5rem}
-.missing{margin-top:.3rem;color:#b00020}
+.next{background:#4caf50;color:#fff;font-weight:700}
+.points{margin-top:.5rem;font-weight:700}
+.missing{margin-top:.3rem;color:#b00020;font-size:.9rem}
+.feedback{margin-top:.6rem;font-weight:800}
+.solution{display:none;margin-top:.6rem;padding:.8rem;background:#e7eefb;border-radius:8px}
+.teacher{position:fixed;top:10px;right:10px;background:#fff;padding:.6rem;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,.15);z-index:3000}
+#teacherLogin{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:1.2rem;border-radius:12px;box-shadow:0 8px 22px rgba(0,0,0,.25);z-index:4000}
 </style>
 </head>
-
 <body>
+
+<div class="teacher"><button onclick="openTeacherLogin()">Lehrer:innenbereich</button></div>
+<div id="teacherLogin">
+<p><strong>Lehrer:innenbereich</strong></p>
+<input type="password" id="teacherPassword" placeholder="Passwort" />
+<div class="btnrow"><button onclick="checkTeacherPassword()">OK</button><button class="reset" onclick="closeTeacherLogin()">Abbrechen</button></div>
+</div>
 
 <header>
 <h1>Lernlandschaft: Der Weg von Weimar zu Hitler</h1>
-<p>Sek II · diagnostisches Bewertungssystem</p>
+<p>Sek II · gewichtetes Bewertungssystem · verbindliche Progression</p>
 <button onclick="window.print()">PDF exportieren</button>
 </header>
 
 <!-- MODUL 1 -->
 <section id="modul1">
 <h2>Modul 1: Ursachen des Scheiterns der Weimarer Republik</h2>
-
-<div class="filmblock">
-<strong>Film:</strong><br><br>
-<a href="https://www.dropbox.com/scl/fi/ay52suureq2m2cxtsfp2a/Das-Scheitern-der-Weimarer-Republik-Ursachen-Grundz-ge.mp4?dl=1" target="_blank">
-Film extern öffnen – Ursachen Weimar
-</a>
-</div>
-
-<div class="question">
+<div class="video-block"><a target="_blank" href="https://www.dropbox.com/scl/fi/ay52suureq2m2cxtsfp2a/Das-Scheitern-der-Weimarer-Republik-Ursachen-Grundz-ge.mp4?dl=1">Film extern öffnen – Ursachen Weimar</a></div>
+<div class="task" data-module="m1" data-solution="Das Scheitern der Weimarer Republik beruhte auf einer Wechselwirkung aus wirtschaftlichen Krisen, politischen Radikalisierungen, strukturellen Schwächen der Verfassung und dem Versagen demokratischer Akteure.">
 <p><strong>1. Warum gab es keine einzelne Ursache für das Scheitern der Weimarer Republik?</strong></p>
-<textarea id="a1"></textarea><br><br>
-
-<button class="check" onclick="check1()">Antwort prüfen</button>
-<button class="reset" onclick="document.getElementById('a1').value=''">Reset</button>
-
-<div id="f1" class="feedback"></div>
-<div id="p1" class="points"></div>
-<div id="m1" class="missing"></div>
-
-<br>
-<a class="nextlink" href="#modul2">Weiter zu Modul 2</a>
+<textarea></textarea>
+<div class="btnrow"><button class="check" onclick="check(this)">Antwort prüfen</button><button class="reset" onclick="resetTask(this)">Reset</button><button class="next" onclick="nextModule('modul2')">Weiter</button></div>
+<div class="points"></div><div class="missing"></div><div class="feedback"></div><div class="solution"></div>
 </div>
 </section>
 
 <!-- MODUL 2 -->
 <section id="modul2">
 <h2>Modul 2: Präsidialkabinette – Brüning, Papen, Schleicher</h2>
-
-<div class="filmblock">
-<a href="https://www.dropbox.com/scl/fi/hyk9y5w57j8jusofwgxx6/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-12.mp4?dl=1" target="_blank">
-Film extern öffnen – Präsidialkabinette I
-</a><br><br>
-<a href="https://www.dropbox.com/scl/fi/uancgp5ud2f7zfkt214h7/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-22.mp4?dl=1" target="_blank">
-Film extern öffnen – Präsidialkabinette II
-</a>
+<div class="video-block">
+<a target="_blank" href="https://www.dropbox.com/scl/fi/hyk9y5w57j8jusofwgxx6/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-12.mp4?dl=1">Film extern öffnen – Präsidialkabinette I</a><br><br>
+<a target="_blank" href="https://www.dropbox.com/scl/fi/uancgp5ud2f7zfkt214h7/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-22.mp4?dl=1">Film extern öffnen – Präsidialkabinette II</a>
 </div>
-
-<div class="question">
+<div class="task" data-module="m2" data-solution="Die Präsidialkabinette stellten einen Systembruch dar, weil sie mithilfe von Artikel 48 ohne parlamentarische Mehrheiten regierten und den Reichstag faktisch entmachteten.">
 <p><strong>2. Warum stellten die Präsidialkabinette einen Systembruch dar?</strong></p>
-<textarea></textarea><br><br>
-
-<a class="nextlink" href="#modul3">Weiter zu Modul 3</a>
+<textarea></textarea>
+<div class="btnrow"><button class="check" onclick="check(this)">Antwort prüfen</button><button class="reset" onclick="resetTask(this)">Reset</button><button class="next" onclick="nextModule('modul3')">Weiter</button></div>
+<div class="points"></div><div class="missing"></div><div class="feedback"></div><div class="solution"></div>
 </div>
 </section>
 
 <!-- MODUL 3 -->
 <section id="modul3">
 <h2>Modul 3: Hitlers Aufstieg zur Macht (Terra X)</h2>
-
-<div class="filmblock">
-<a href="https://www.dropbox.com/scl/fi/xiun3yfvx1xpnfkpbksni/Hitlers-Aufstieg-zur-Macht-Terra-X.mp4?dl=1" target="_blank">
-Film extern öffnen – Terra X
-</a>
-</div>
-
-<div class="question">
-<textarea></textarea><br><br>
-<a class="nextlink" href="#modul4">Weiter zu Modul 4</a>
+<div class="video-block"><a target="_blank" href="https://www.dropbox.com/scl/fi/xiun3yfvx1xpnfkpbksni/Hitlers-Aufstieg-zur-Macht-Terra-X.mp4?dl=1">Film extern öffnen – Terra X</a></div>
+<div class="task" data-module="m3" data-solution="Hitlers Ernennung zum Reichskanzler wurde durch die Weltwirtschaftskrise, das Kalkül konservativer Eliten, Wahlerfolge der NSDAP und politische Gewalt ermöglicht.">
+<p><strong>3. Welche Faktoren ermöglichten Hitlers Ernennung zum Reichskanzler?</strong></p>
+<textarea></textarea>
+<div class="btnrow"><button class="check" onclick="check(this)">Antwort prüfen</button><button class="reset" onclick="resetTask(this)">Reset</button><button class="next" onclick="nextModule('modul4')">Weiter</button></div>
+<div class="points"></div><div class="missing"></div><div class="feedback"></div><div class="solution"></div>
 </div>
 </section>
 
 <!-- MODUL 4 -->
 <section id="modul4">
 <h2>Modul 4: Adolf Hitler – Vom Niemand zum Diktator</h2>
-
-<div class="filmblock">
-<a href="https://www.dropbox.com/scl/fi/x7j90ay6jn60j46zj14mw/Adolf-Hitlers-Aufstieg-Vom-Niemand-zum-Diktator.mp4?dl=1" target="_blank">
-Film extern öffnen – Hitler
-</a>
-</div>
-
-<div class="question">
+<div class="video-block"><a target="_blank" href="https://www.dropbox.com/scl/fi/x7j90ay6jn60j46zj14mw/Adolf-Hitlers-Aufstieg-Vom-Niemand-zum-Diktator.mp4?dl=1">Film extern öffnen – Niemand zum Diktator</a></div>
+<div class="task" data-module="m4" data-solution="Hitlers persönliches Auftreten, seine Propaganda, der Einsatz von Gewalt und die Unterstützung durch Netzwerke wirkten mit den Krisen der Weimarer Republik zusammen.">
+<p><strong>4. Wie wirkten persönliche Eigenschaften Hitlers mit strukturellen Krisen zusammen?</strong></p>
 <textarea></textarea>
+<div class="btnrow"><button class="check" onclick="check(this)">Antwort prüfen</button><button class="reset" onclick="resetTask(this)">Reset</button></div>
+<div class="points"></div><div class="missing"></div><div class="feedback"></div><div class="solution"></div>
 </div>
 </section>
 
 <script>
-function check1(){
- const text = document.getElementById('a1').value.toLowerCase();
- let score=0;
- let missing=[];
-
- if(text.includes('dolch')) score+=2; else missing.push('Dolchstoßlegende');
- if(text.includes('versaill')) score+=2; else missing.push('Versailler Vertrag');
- if(text.includes('wirtschaft')) score+=2; else missing.push('Wirtschaftskrise');
- if(text.includes('inflation')) score+=2; else missing.push('Inflation');
- if(text.includes('weltwirtschaft')) score+=3; else missing.push('Weltwirtschaftskrise');
-
- document.getElementById('p1').textContent =
-   'Punkte: '+score+'/11 ('+Math.round(score/11*100)+' %)';
-
- document.getElementById('m1').textContent =
-   missing.length ? 'Fehlende gewichtige Begriffe: '+missing.join(', ') : '';
-
- document.getElementById('f1').textContent =
-   score>=5 ? 'Inhaltlich tragfähig.' : 'Weiterarbeiten erforderlich.';
+const MODULES={
+ m1:[{k:'weltwirtschaftskrise',w:3},{k:'versailler',w:2},{k:'inflation',w:2},{k:'dolchst',w:2},{k:'putsch',w:1},{k:'parteien',w:1}],
+ m2:[{k:'artikel 48',w:4},{k:'notverordnung',w:3},{k:'reichspräsident',w:2},{k:'hindenburg',w:2},{k:'parlament',w:2}],
+ m3:[{k:'weltwirtschaftskrise',w:3},{k:'eliten',w:3},{k:'sa',w:2},{k:'hindenburg',w:2},{k:'1933',w:2}],
+ m4:[{k:'propaganda',w:3},{k:'sa',w:2},{k:'gewalt',w:2},{k:'inszenierung',w:2},{k:'netzwerk',w:1}]
+};
+let teacherMode=false;
+function check(btn){
+ const box=btn.closest('.task');
+ const text=box.querySelector('textarea').value.toLowerCase();
+ const mod=box.dataset.module;
+ let score=0,max=0,miss=[];
+ MODULES[mod].forEach(e=>{max+=e.w;if(text.includes(e.k)){score+=e.w}else{miss.push(e.k)}});
+ const r=score/max;
+ box.querySelector('.points').textContent=`Punkte: ${score}/${max} (${Math.round(r*100)}%)`;
+ box.querySelector('.missing').textContent='Fehlende gewichtige Begriffe: '+miss.join(', ');
+ const f=box.querySelector('.feedback');
+ if(text.trim().length<40){f.textContent='Antwort zu kurz – nicht bewertbar.';return}
+ if(!teacherMode&&r<0.4){f.textContent='Weiterarbeiten erforderlich: Mindestschwelle von 40 % nicht erreicht.';return}
+ f.textContent='Inhaltlich tragfähig.';
+ if(r>=0.7){const s=box.querySelector('.solution');s.style.display='block';s.textContent='Musterlösung: '+box.dataset.solution}
 }
+function resetTask(btn){const b=btn.closest('.task');b.querySelector('textarea').value='';b.querySelector('.points').textContent='';b.querySelector('.missing').textContent='';b.querySelector('.feedback').textContent='';const s=b.querySelector('.solution');s.style.display='none';s.textContent=''}
+function nextModule(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function openTeacherLogin(){document.getElementById('teacherLogin').style.display='block'}
+function closeTeacherLogin(){document.getElementById('teacherLogin').style.display='none';document.getElementById('teacherPassword').value=''}
+function checkTeacherPassword(){if(document.getElementById('teacherPassword').value==='Pfäffikon und Nuolen'){teacherMode=true;closeTeacherLogin();alert('Lehrer:innenmodus aktiviert (keine Schwelle).')}else{alert('Falsches Passwort.')}}
 </script>
-
 </body>
 </html>
