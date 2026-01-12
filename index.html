@@ -93,20 +93,9 @@
       cursor: pointer;
     }
 
-    .check {
-      background: #5a78b4;
-      color: #fff;
-    }
-
-    .next {
-      background: #4caf50;
-      color: #fff;
-    }
-
-    .reset {
-      background: #777;
-      color: #fff;
-    }
+    .check { background: #5a78b4; color: #fff; }
+    .next  { background: #4caf50; color: #fff; }
+    .reset { background: #777; color: #fff; }
 
     .feedback {
       margin-top: 1rem;
@@ -127,6 +116,7 @@
       padding: 0.8rem 1.2rem;
       cursor: pointer;
       font-weight: 600;
+      z-index: 9999;
     }
   </style>
 </head>
@@ -140,6 +130,7 @@
 
 <div class="teacher" onclick="enterTeacherMode()">Lehrer:innenbereich</div>
 
+<!-- MODUL 1 -->
 <section id="modul1">
   <div class="path"><strong>Lernpfad:</strong> Ursachen → Präsidialkabinette → Hitler</div>
 
@@ -167,6 +158,7 @@
   </div>
 </section>
 
+<!-- MODUL 2 -->
 <section id="modul2">
   <h2>Modul 2: Präsidialkabinette – Brüning, Papen, Schleicher</h2>
 
@@ -194,21 +186,44 @@
   </div>
 </section>
 
+<!-- MODUL 3 -->
 <section id="modul3">
-  <h2>Modul 3: Hitlers Aufstieg zur Macht</h2>
+  <h2>Modul 3: Hitlers Aufstieg zur Macht (Terra X)</h2>
 
   <div class="film-box">
     <a href="https://www.dropbox.com/scl/fi/xiun3yfvx1xpnfkpbksni/Hitlers-Aufstieg-zur-Macht-Terra-X.mp4?dl=0" target="_blank">
       Film extern öffnen – Terra X
-    </a><br><br>
-    <a href="https://www.dropbox.com/scl/fi/x7j90ay6jn60j46zj14mw/Adolf-Hitlers-Aufstieg-Vom-Niemand-zum-Diktator.mp4?dl=0" target="_blank">
-      Film extern öffnen – Vom Niemand zum Diktator
     </a>
   </div>
 
   <div class="question" data-max="10"
        data-terms='{"weltwirtschaftskrise":3,"eliten":2,"propaganda":2,"sa":2,"ernennung":1}'>
     <p><strong>3. Wie wurde Hitlers Ernennung zum Reichskanzler möglich?</strong></p>
+
+    <textarea></textarea>
+
+    <button class="check" onclick="checkAnswer(this)">Antwort prüfen</button>
+    <button class="next" disabled onclick="goNext('modul4', this)">Weiter</button>
+    <button class="reset" onclick="resetQuestion(this)">Reset</button>
+
+    <div class="feedback"></div>
+    <div class="details"></div>
+  </div>
+</section>
+
+<!-- MODUL 4 (WIEDER DA!) -->
+<section id="modul4">
+  <h2>Modul 4: Adolf Hitler – Vom Niemand zum Diktator</h2>
+
+  <div class="film-box">
+    <a href="https://www.dropbox.com/scl/fi/x7j90ay6jn60j46zj14mw/Adolf-Hitlers-Aufstieg-Vom-Niemand-zum-Diktator.mp4?dl=0" target="_blank">
+      Film extern öffnen – Vom Niemand zum Diktator
+    </a>
+  </div>
+
+  <div class="question" data-max="10"
+       data-terms='{"propaganda":3,"sa":2,"gewalt":2,"inszenierung":2,"netzwerk":1}'>
+    <p><strong>4. Wie wirkten persönliche Faktoren Hitlers mit strukturellen Krisen zusammen?</strong></p>
 
     <textarea></textarea>
 
