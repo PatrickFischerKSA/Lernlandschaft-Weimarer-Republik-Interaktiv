@@ -20,15 +20,6 @@
       padding: 2.5rem;
     }
 
-    header h1 {
-      margin: 0 0 0.5rem 0;
-    }
-
-    header p {
-      margin: 0;
-      opacity: 0.9;
-    }
-
     section {
       background: rgba(255,255,255,0.94);
       max-width: 980px;
@@ -38,9 +29,7 @@
       box-shadow: 0 8px 22px rgba(0,0,0,.08);
     }
 
-    h2 {
-      margin-top: 0;
-    }
+    h2 { margin-top: 0; }
 
     .path {
       background: #eef1f7;
@@ -118,6 +107,27 @@
       font-weight: 600;
       z-index: 9999;
     }
+
+    /* ===== PDF EXPORT ===== */
+    @media print {
+      body {
+        background: #fff !important;
+      }
+      header,
+      .teacher,
+      button,
+      .film-box {
+        display: none !important;
+      }
+      section {
+        box-shadow: none;
+        margin: 0;
+        border-radius: 0;
+      }
+      textarea {
+        border: none;
+      }
+    }
   </style>
 </head>
 
@@ -126,6 +136,7 @@
 <header>
   <h1>Lernlandschaft: Der Weg von Weimar zu Hitler</h1>
   <p>Sek II · gewichtete Auswertung · transparente Bewertung</p>
+  <button onclick="exportPDF()">PDF exportieren (Fragen & Antworten)</button>
 </header>
 
 <div class="teacher" onclick="enterTeacherMode()">Lehrer:innenbereich</div>
@@ -133,11 +144,9 @@
 <!-- MODUL 1 -->
 <section id="modul1">
   <div class="path"><strong>Lernpfad:</strong> Ursachen → Präsidialkabinette → Hitler</div>
-
   <h2>Modul 1: Ursachen des Scheiterns der Weimarer Republik</h2>
 
   <div class="film-box">
-    <strong>Film:</strong><br>
     <a href="https://www.dropbox.com/scl/fi/ay52suureq2m2cxtsfp2a/Das-Scheitern-der-Weimarer-Republik-Ursachen-Grundz-ge.mp4?dl=0" target="_blank">
       Film extern öffnen – Ursachen Weimar
     </a>
@@ -146,13 +155,10 @@
   <div class="question" data-max="11"
        data-terms='{"versailler":3,"dolchstoß":2,"weltwirtschaftskrise":3,"inflation":2,"antidemokratisch":1}'>
     <p><strong>1. Warum gab es keine einzelne Ursache für das Scheitern der Weimarer Republik?</strong></p>
-
     <textarea></textarea>
-
     <button class="check" onclick="checkAnswer(this)">Antwort prüfen</button>
-    <button class="next" disabled onclick="goNext('modul2', this)">Weiter</button>
+    <button class="next" disabled onclick="goNext('modul2')">Weiter</button>
     <button class="reset" onclick="resetQuestion(this)">Reset</button>
-
     <div class="feedback"></div>
     <div class="details"></div>
   </div>
@@ -164,23 +170,20 @@
 
   <div class="film-box">
     <a href="https://www.dropbox.com/scl/fi/hyk9y5w57j8jusofwgxx6/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-12.mp4?dl=0" target="_blank">
-      Film extern öffnen (Präsidialkabinette I)
+      Film extern öffnen (Teil 1)
     </a><br><br>
     <a href="https://www.dropbox.com/scl/fi/uancgp5ud2f7zfkt214h7/Weimarer-Republik-Zusammenfassung-Pr-sidialkabinette-Br-ning-Papen-Schleicher-22.mp4?dl=0" target="_blank">
-      Film extern öffnen (Präsidialkabinette II)
+      Film extern öffnen (Teil 2)
     </a>
   </div>
 
   <div class="question" data-max="10"
        data-terms='{"artikel 48":4,"notverordnung":3,"reichspräsident":2,"parlament":1}'>
     <p><strong>2. Warum stellten die Präsidialkabinette einen Systembruch dar?</strong></p>
-
     <textarea></textarea>
-
     <button class="check" onclick="checkAnswer(this)">Antwort prüfen</button>
-    <button class="next" disabled onclick="goNext('modul3', this)">Weiter</button>
+    <button class="next" disabled onclick="goNext('modul3')">Weiter</button>
     <button class="reset" onclick="resetQuestion(this)">Reset</button>
-
     <div class="feedback"></div>
     <div class="details"></div>
   </div>
@@ -199,19 +202,16 @@
   <div class="question" data-max="10"
        data-terms='{"weltwirtschaftskrise":3,"eliten":2,"propaganda":2,"sa":2,"ernennung":1}'>
     <p><strong>3. Wie wurde Hitlers Ernennung zum Reichskanzler möglich?</strong></p>
-
     <textarea></textarea>
-
     <button class="check" onclick="checkAnswer(this)">Antwort prüfen</button>
-    <button class="next" disabled onclick="goNext('modul4', this)">Weiter</button>
+    <button class="next" disabled onclick="goNext('modul4')">Weiter</button>
     <button class="reset" onclick="resetQuestion(this)">Reset</button>
-
     <div class="feedback"></div>
     <div class="details"></div>
   </div>
 </section>
 
-<!-- MODUL 4 (WIEDER DA!) -->
+<!-- MODUL 4 -->
 <section id="modul4">
   <h2>Modul 4: Adolf Hitler – Vom Niemand zum Diktator</h2>
 
@@ -224,12 +224,9 @@
   <div class="question" data-max="10"
        data-terms='{"propaganda":3,"sa":2,"gewalt":2,"inszenierung":2,"netzwerk":1}'>
     <p><strong>4. Wie wirkten persönliche Faktoren Hitlers mit strukturellen Krisen zusammen?</strong></p>
-
     <textarea></textarea>
-
     <button class="check" onclick="checkAnswer(this)">Antwort prüfen</button>
     <button class="reset" onclick="resetQuestion(this)">Reset</button>
-
     <div class="feedback"></div>
     <div class="details"></div>
   </div>
@@ -284,6 +281,10 @@ function resetQuestion(btn) {
 
 function goNext(id) {
   document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function exportPDF() {
+  window.print();
 }
 
 function enterTeacherMode() {
